@@ -15,7 +15,8 @@ def canUnlockAll(boxes):
             if valid[check] == "unlocked":
                 getkey = boxes[check]
             for i in getkey:
-                valid[i] = "unlocked"
+                if i < len(boxes):
+                    valid[i] = "unlocked"
     for validate in valid:
         if validate == "locked":
             return (False)
