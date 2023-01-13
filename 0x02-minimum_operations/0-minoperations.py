@@ -13,6 +13,8 @@ n H characters in the file.
 def minOperations(n):
     """find minimum operation"""
     from math import sqrt
+    if n <= 1:
+        return 0
 
     def is_prime(number):
         """checks for prime"""
