@@ -13,18 +13,17 @@ count = 0
 for line in sys.stdin:
     try:
         div = line.split()
-        if len(div) != 9:
+        if len(div) != 9 and len(div) != 7:
             continue
         count += 1
         try:
-            file_size.append(int(div[8]))
+            file_size.append(int(div[len(div) - 1]))
         except Exception:
             continue
-        code = div[7]
+        code = div[len(div) - 2]
         if code in status_code:
             status_code[code] += 1
         else:
-            file_size.pop()
             count -= 1
             continue
         if count == 10:
