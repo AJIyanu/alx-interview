@@ -1,0 +1,1 @@
+continuous read from inout
