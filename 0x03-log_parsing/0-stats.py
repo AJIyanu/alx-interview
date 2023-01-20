@@ -29,10 +29,10 @@ for line in sys.stdin:
             continue
         if count == 10:
             file_size = [sum(file_size)]
-            print("File size:", file_size[0])
+            print("File size: {}".format(file_size[0]))
             for cod in status_code:
                 if status_code[cod] != 0:
-                    print("{}: {}".format(cod, status_code[cod]))
+                    print("{}: {}".format(int(cod), status_code[cod]))
             count = 0
     except KeyboardInterrupt:
         break
