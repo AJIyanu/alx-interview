@@ -38,6 +38,6 @@ for line in sys.stdin:
         break
 
 print("File size:", sum(file_size))
-for cod in status_cod:
+for cod in status_code:
     if status_code[cod] != 0:
         print("{}: {}".format(cod, status_code[cod]))
