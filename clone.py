@@ -4,10 +4,10 @@ import subprocess as sub
 import os
 
 
-pat = "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"
-usr = "AJIyanu"
+pat: str = ""  #put your PAT here
+usr: str = "AJIyanu"
 repo: str = input("enter repo_name:\n")
-resp = "d"
+resp: str = "d"
 
 resp = input("Enter username  or type 'd' to use default: ")
 if resp != "d":
@@ -15,16 +15,20 @@ if resp != "d":
 url = "https://{}@github.com/{}/{}.git".format(pat, usr, repo)
 sub.call(["git", "clone", url])
 
+print("************************************************************")
 resp = input("Would you like a README in the repo? 'Y' to yes/'R' to exit /anykey to skip: ")
 if resp == "R":
     exit()
-elif resp == "Y":
+if resp == "Y":
     lines = []
-    print("Enter the content of the readme, please type the word 'done' when done otherwise locked in emdless loop")
+    print("Type each line and then Enter")
+    print("enter 'done' when done otherwise you are stuck in endless loop")
+    print("don't worry 'done' won't be appended")
     while resp != "done":
         resp = input("")
         lines.append(resp)
-    path = "{}/README.md".format(repo)
+    path: str = f"{repo}/README.md"
+    lines.pop()
     with open(path, 'w') as file:
         file.writelines(line + '\n' for line in lines)
 else:
