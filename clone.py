@@ -9,13 +9,14 @@ usr: str = "AJIyanu"
 repo: str = input("enter repo_name:\n")
 resp: str = "d"
 
+print("\n\n************************************************************\n\n")
 resp = input("Enter username  or type 'd' to use default: ")
 if resp != "d":
     usr = resp
 url = "https://{}@github.com/{}/{}.git".format(pat, usr, repo)
 sub.call(["git", "clone", url])
 
-print("************************************************************")
+print("\n\n************************************************************\n\n")
 resp = input("Would you like a README in the repo? 'Y' to yes/'R' to exit /anykey to skip: ")
 if resp == "R":
     exit()
@@ -35,8 +36,9 @@ else:
     print("skipped")
 
 
+print("\n\n************************************************************\n\n")
 os.chdir(repo)
-resp = input("would you like to create directory in the repo?: ('Y' creates, 'R' exits anykey to skip) ")
+reply: str = input("would you like to create directory in the repo?:('Y' creates, 'R' exits anykey to skip) ")
 if resp == 'R':
     exit()
 if resp == 'Y':
@@ -47,6 +49,7 @@ if resp == 'Y':
         print("exiting because", e)
         exit()
     lines = []
+    print("\n\n************************************************************\n\n")
     print("Enter the content of the readme, please type the word 'done' when done otherwise locked in emdless loop")
     while resp != "done":
         resp = input("")
