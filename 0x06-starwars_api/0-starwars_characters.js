@@ -1,5 +1,6 @@
 #!/usr/bin/node
 
+const { resolve } = require('path');
 const request = require('request');
 const episode = process.argv[2];
 const url = 'https://swapi-api.alx-tools.com/api/films/' + episode;
@@ -22,3 +23,10 @@ request(url, function (error, response, body) {
   const xter = result.characters;
   makerequest(xter[1]);
 });
+
+async function logname(url) {
+  const peopleurl = await request(url);
+  console.log(peopleurl);
+}
+
+logname(url);
