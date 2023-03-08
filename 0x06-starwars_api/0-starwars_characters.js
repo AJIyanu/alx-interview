@@ -1,19 +1,18 @@
 #!/usr/bin/node
 
-const { resolve } = require('path');
 const request = require('request');
 const episode = process.argv[2];
 const url = 'https://swapi-api.alx-tools.com/api/films/' + episode;
 console.log(url);
 
-async function makeRequests(urls) {
+async function makeRequests (urls) {
   const promises = urls.map(url => {
     return new Promise((resolve, reject) => {
       request(url, (error, response, body) => {
         if (error) {
           reject(error);
         } else {
-          resolve(body);
+          resolve(JSON.parse(response.body).name);
         }
       });
     });
@@ -23,7 +22,7 @@ async function makeRequests(urls) {
   return results;
 }
 
-async function getpeople(url) {
+async function getpeople (url) {
   return new Promise((resolve, reject) => {
     request(url, (error, response, body) => {
       if (error) {
@@ -40,6 +39,7 @@ async function logname (url) {
   console.log(people);
   const res = await makeRequests(people);
   console.log(typeof (res));
+  console.log(res);
 }
 
 logname(url);
