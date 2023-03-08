@@ -39,7 +39,7 @@ async function logname (url) {
   const people = await getpeople(url);
   console.log(people);
   const res = await makeRequests(people);
-  console.log(res);
+  console.log(typeof (res));
 }
 
 logname(url);
