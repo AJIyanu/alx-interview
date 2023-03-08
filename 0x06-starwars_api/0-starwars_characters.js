@@ -11,9 +11,13 @@ async function logname (url) {
     console.log(error);
     const xter = JSON.parse(response.body).characters;
     console.log(xter);
+    for (let i = 0; i < xter.length; i++) {
+      await request(xter[i], function (error, response) {
+        console.log(error);
+        console.log(JSON.parse(response.body).name);
+      });
+    }
   });
-  console.log(typeof (peopleurl));
-  console.log(peopleurl);
 }
 
 logname(url);
