@@ -7,7 +7,7 @@ const url = 'https://swapi-api.alx-tools.com/api/films/' + episode;
 console.log(url);
 
 async function makerequest (people_url) {
-  return new promise ((resolve, rejects) => {
+  return new Promise((resolve, reject) => {
     request(people_url, function(error, response) {
       console.log(error);
       const result = JSON.parse(response.body);
