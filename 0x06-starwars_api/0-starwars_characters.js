@@ -26,7 +26,7 @@ request(url, function (error, response, body) {
 
 async function logname(url) {
   const peopleurl = await request(url);
-  console.log(peopleurl);
+  console.log(peopleurl.body);
 }
 
 logname(url);
