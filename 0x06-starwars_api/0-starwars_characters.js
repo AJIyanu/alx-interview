@@ -23,13 +23,22 @@ async function makeRequests(urls) {
   return results;
 }
 
-async function logname (url) {
-  await request(url, async function (error, response) {
-    console.log(error);
-    const xter = JSON.parse(response.body).characters;
-    console.log(xter);
-    makeRequests(xter);
+async function getpeople(url) {
+  return new Promise((resolve, reject) => {
+    request(url, (error, response, body) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(JSON.parse(response.body).characters);
+      }
+    });
   });
+}
+
+async function logname (url) {
+  const people = await getpeople(url);
+  console.log(people);
+  makeRequests(people);
 }
 
 logname(url);
