@@ -38,7 +38,8 @@ async function getpeople(url) {
 async function logname (url) {
   const people = await getpeople(url);
   console.log(people);
-  makeRequests(people);
+  const res = await makeRequests(people);
+  console.log(res);
 }
 
 logname(url);
