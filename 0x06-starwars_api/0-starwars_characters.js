@@ -7,9 +7,10 @@ const url = 'https://swapi-api.alx-tools.com/api/films/' + episode;
 console.log(url);
 
 async function logname (url) {
-  const peopleurl = await request(url, function (error, response) {
+  const peopleurl = await request(url, async function (error, response) {
     console.log(error);
-    return JSON.parse(response.body).characters;
+    const xter = JSON.parse(response.body).characters;
+    console.log(xter);
   });
   console.log(typeof (peopleurl));
   console.log(peopleurl);
