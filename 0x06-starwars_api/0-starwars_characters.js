@@ -6,7 +6,8 @@ const url = 'https://swapi-api.alx-tools.com/api/films/' + episode;
 console.log(url);
 
 request(url, function (error, response, body) {
-  //console.log(error);
-  console.log(typeof(response.body));
+  console.log(error);
+  const result = JSON.parse(response.body);
+  console.log(result.characters);
   //console.log(body);
 });
