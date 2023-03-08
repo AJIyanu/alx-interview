@@ -38,8 +38,9 @@ async function logname (url) {
   const people = await getpeople(url);
   console.log(people);
   const res = await makeRequests(people);
-  console.log(typeof (res));
-  console.log(res);
+  res.forEach((names) => {
+    console.log(names);
+  });
 }
 
 logname(url);
