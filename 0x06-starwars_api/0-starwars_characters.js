@@ -3,7 +3,6 @@
 const request = require('request');
 const episode = process.argv[2];
 const url = 'https://swapi-api.alx-tools.com/api/films/' + episode;
-console.log(url);
 
 async function makeRequests (urls) {
   const promises = urls.map(url => {
