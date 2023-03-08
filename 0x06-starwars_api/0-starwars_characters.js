@@ -36,7 +36,6 @@ async function getpeople (url) {
 
 async function logname (url) {
   const people = await getpeople(url);
-  console.log(people);
   const res = await makeRequests(people);
   res.forEach((names) => {
     console.log(names);
