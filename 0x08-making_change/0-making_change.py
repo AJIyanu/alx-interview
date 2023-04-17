@@ -4,12 +4,9 @@ Find the lowest combinations of number of coin
 """
 
 
-from typing import List
-
-
-def makeChange(coins: List[int], total: int) -> int:
+def makeChange(coins, total: int) -> int:
     """returns the lowest number of combination of coin"""
-    if total == 0:
+    if total <= 0:
         return 0
     count: int=0
     coins = sorted(coins, reverse=True)
