@@ -1,22 +1,21 @@
-#!/usr/bin/python3
 """
-Main file for testing
+Defines function that determines the fewest number of coins to make change
 """
 
 
-def makeChange(coins, total: int) -> int:
+def makeChange(coins, total):
     """
-    Returns the minimum number of coins needed to make up the total amount.
-
-    Args:
-        coins (list[int]): List of integers representing the denominations of
-        available coins.
-        total (int): The total amount of money for which the minimum number
-        of coins needs to be calculated.
-
-    Returns:
-        int: The minimum number of coins needed to make up the total amount,
-        or -1 if it is not possible.
+    Determines the fewest number of coins needed to meet a given total
+    parameters:
+        coins [list or positive ints]:
+            the values of the coins in your possession
+            you can assume you have an infinite number of coins of all values
+        total [int]:
+            total amount of change to make
+            if total is 0 or less, return 0
+    returns:
+        the fewest number of coins to make the change
+        or -1 if the total change cannot be made with the given coins
     """
     if total <= 0:
         return 0
