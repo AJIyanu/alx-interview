@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Find the lowest combinations of number of coin
+Main file for testing
 """
 
 
