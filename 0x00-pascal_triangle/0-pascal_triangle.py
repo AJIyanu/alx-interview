@@ -3,6 +3,8 @@
 Function that returns a list of lists of integers
 representing the Pascal's triangle of n
 """
+
+
 def pascal_triangle(n):
     """
     returns a list of intergers representing pascal triangle
@@ -20,7 +22,8 @@ def pascal_triangle(n):
                 new_row.append(1)
             else:
                 try:
-                    new_row.append(pascal[row - 2][post - 1] + pascal[row - 2][post])
+                    new_row.append(pascal[row - 2][post - 1] +
+                                   pascal[row - 2][post])
                 except IndexError:
                     pass
         pascal.append(new_row)
