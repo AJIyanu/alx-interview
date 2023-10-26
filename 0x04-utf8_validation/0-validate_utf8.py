@@ -15,8 +15,8 @@ def validUTF8(data):
                 return False
             count -= 1
         else:
-            if check > 255:
-                return False
+#            if check > 255:
+#                return False
             if check > 239:
                 count = 3
             elif check > 223:
