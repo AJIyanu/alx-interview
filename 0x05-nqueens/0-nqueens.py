@@ -42,20 +42,61 @@ def cancel_VH(full_list: list, post: list):
             new_list.append(each)
     return new_list
 
-def visual(positions, num):
+def cancel_diag(full_list: list, post: list) -> list:
+    """
+    returns a new list with diagonals
+    removed left right up down
+    """
+    new_list = []
+    list2 = []
+    for each in full_list:
+        diff = post[0] - each[0]
+        if post[1] - diff != each[1]:
+            new_list.append(each)
+    for each in new_list:
+        diff = post[0] - each[0]
+        if post[1] + diff != each[1]:
+            list2.append(each)
+    return list2
+
+def remove_invalid(lst: list, pos: list):
+    """returns a new list valid for other queens to stand"""
+    vhout = cancel_VH(lst, pos)
+    diagout = cancel_diag(vhout, pos)
+    return diagout
+
+def visual(pos, num):
     """prints postion in a visible manner"""
-    count = 0
-    for each in positions:
-        if count == num - 1:
-            if each[1] != num:
-                print("[x, x]")
-            print(each)
-            count = 0
-        else:
-            if each[1] != num:
-                print(f"[x, x] ", end="")
-            print(f"{each} ", end="")
-            count += 1
+    z = 0
+    for x in range(num):
+        for y in range(num):
+            try:
+                if x == pos[z][0] and y == pos[z][1]:
+                    print(f"{pos[z]} ", end="")
+                    z += 1
+                else:
+                    print("[X, X] ", end="")
+            except IndexError:
+                print("[X, X] ", end="")
+        print()
+
+
+def arrange_queens(possible: list, num: int):
+    """returns all posible poitions of queens
+       without taking each other out"""
+    grand_list = []
+    trash = possible.copy()
+    for y in range(num):
+        sub_list = []
+        for x in range(num):
+            print(f"chcking out {[x,y]} in {trash}")
+            if [x, y] in trash:
+                print(f"found {[x, y]}")
+                sub_list.append([x, y])
+                trash = remove_invalid(trash, [x, y])
+                visual(trash, num)
+        grand_list.append(sub_list)
+    return grand_list
 
 
 if __name__ == "__main__":
@@ -70,6 +111,8 @@ if __name__ == "__main__":
     except ValueError:
         print("N must be a number")
         exit(1)
-    check = cancel_VH(create_positions(num), [0, 0])
-    print(check)
-    visual(check, num)
+    check = arrange_queens(create_positions(num), num)
+    for each in check:
+        visual(each, num)
+        print(len(each))
+        print()
