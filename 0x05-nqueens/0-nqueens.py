@@ -75,9 +75,9 @@ def visual(pos, num):
                     print(f"{pos[z]} ", end="")
                     z += 1
                 else:
-                    print("[X, X] ", end="")
+                    print("[x, x] ", end="")
             except IndexError:
-                print("[X, X] ", end="")
+                print("[x, x] ", end="")
         print()
 
 
@@ -102,17 +102,70 @@ def arrange_queens(possible: list, num: int):
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Usage: nqueens N")
-        exit(1)
+        sys.exit(1)
     try:
-        num = int(sys.argv[1])
-        if num < 4:
+        nums = int(sys.argv[1])
+        if nums < 4:
             print("N must be at least 4")
-            exit(1)
+            sys.exit(1)
     except ValueError:
         print("N must be a number")
-        exit(1)
-    check = arrange_queens(create_positions(num), num)
-    for each in check:
-        visual(each, num)
-        print(len(each))
-        print()
+        sys.exit(1)
+    hor = 0
+    ver = 0
+    grand = []
+    pointer = []
+    sub = []
+    invalids = []
+    while hor < nums:
+        for i in range(nums):
+            pointer.append([i, hor])
+        # print(pointer)
+        possibles = create_positions(nums)
+        for xy in range(len(sub)):
+            possibles = remove_invalid(possibles, sub[xy])
+        visual(possibles, nums)
+        x = len(sub)
+        if x < 0:
+            x = 0
+        while x < nums:
+            print(f"checking for {pointer[x]} in {possibles} and {invalids}")
+            if pointer[x] in possibles and pointer[x] not in invalids:
+                sub.append(pointer[x].copy())
+                possibles = remove_invalid(possibles, pointer[x])
+                print(f"found {pointer[x]}")
+                visual(possibles, nums)
+                x += 1
+                ver = 0
+            else:
+                if ver < nums:
+                    if pointer[x][1] == nums - 1:
+                        pointer[x][1] = 0
+                    else:
+                        pointer[x][1] += 1
+                    print(f"new {pointer[x]}")
+                    ver += 1
+                else:
+                    print(f"found none at {x}")
+                    ver = 0
+                    break
+        print(sub)
+        if len(sub) == nums:
+            grand.append(sub)
+            hor += 1
+            pointer = []
+            sub = []
+            invalids = []
+        elif len(sub) == 1:
+            hor += 1
+            pointer = []
+            sub = []
+            invalids = []
+            # break
+        else:
+            invalids.append(sub.pop())
+            ver = 0
+            print(sub)
+        print("-----------------------------------------------------")
+    for each in grand:
+        print(each)
