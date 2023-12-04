@@ -36,14 +36,3 @@ def island_perimeter(grid):
                 if grid[j][i] != grid[j - 1][i]:
                     column += 1
     return row + column
-
-
-
-if __name__ == "__main__":
-    grid = [[0, 0, 0, 0, 0, 0],
-            [0, 1, 1, 0, 0, 0],
-            [1, 1, 1, 0, 0, 0],
-            [0, 1, 1, 1, 0, 0],
-            [0, 0, 0, 1, 1, 1]]
-
-    print(island_perimeter(grid))
