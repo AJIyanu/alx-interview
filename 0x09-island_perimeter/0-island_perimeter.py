@@ -15,6 +15,8 @@ def island_perimeter(grid):
             elif j == len(grid[i]) - 1:
                 if grid[i][j] == 1:
                     row += 1
+                elif grid[i][j] != grid[i][j - 1]:
+                    row += 1
                     # print(f'adding from last end {i}, {j}')
             else:
                 if grid[i][j] != grid[i][j - 1]:
@@ -28,6 +30,8 @@ def island_perimeter(grid):
             elif j == len(grid) - 1:
                 if grid[j][i] == 1:
                     column += 1
+                elif grid[j][i] != grid[j - 1][i]:
+                    column += 1
             else:
                 if grid[j][i] != grid[j - 1][i]:
                     column += 1
@@ -36,8 +40,10 @@ def island_perimeter(grid):
 
 
 if __name__ == "__main__":
-    grid = [[1, 1, 1, 1, 1],
-            [1, 1, 1, 1, 1],
-            [1, 1, 1, 1, 1]]
+    grid = [[0, 0, 0, 0, 0, 0],
+            [0, 1, 1, 0, 0, 0],
+            [1, 1, 1, 0, 0, 0],
+            [0, 1, 1, 1, 0, 0],
+            [0, 0, 0, 1, 1, 1]]
 
     print(island_perimeter(grid))
