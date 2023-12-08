@@ -2,7 +2,6 @@
 """prime game to eliminate prime numbers and multiples"""
 
 
-
 def isWinner(x, nums):
     """find the most winner"""
     if x == 0:
@@ -43,7 +42,7 @@ def roundWinnwer(rNumber):
     count = 0
     check_list = generate_number_list(rNumber)
     while len(check_list) > 1:
-        check_list  = remove_multiple(check_list, check_list[1])
+        check_list = remove_multiple(check_list, check_list[1])
         count += 1
     if count % 2 == 0:
         return "Ben"
