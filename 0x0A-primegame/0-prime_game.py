@@ -6,9 +6,12 @@ def isWinner(x, nums):
     """find the most winner"""
     if x == 0:
         return None
+    numbers = nums.copy()
+    while len(numbers) > x:
+        numbers.pop()
     ben = 0
     maria = 0
-    for n in nums:
+    for n in numbers:
         if roundWinnwer(n) == "Ben":
             ben += 1
         else:
